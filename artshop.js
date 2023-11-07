@@ -33,14 +33,14 @@ const Usuario = mongoose.model("Usuario", UsuarioSchema);
 //configurando os roteamentos do usuario
 app.post("/cadastroUsuario", async(req, res)=>{
     const email = req.body.email;
-    const Senha = req.body.senha;
+    const senha = req.body.senha;
 
 
 
-    const Usuario = new Usuario({
+    const usuario = new Usuario({
         email : email,
         senha : senha
-    })
+    });
 
 
     try{
@@ -52,17 +52,6 @@ app.post("/cadastroUsuario", async(req, res)=>{
 
 
 });
-
-app.get("/", async(req, res)=>{
-    res.sendFile(__dirname +"/index.html");
-})
-
-
-//configurando a porta
-app.listen(port, ()=>{
-    console.log(`Servidor rodando na porta ${port}`);
-})
-
 
 
 //criando a model do produtoart
@@ -106,8 +95,16 @@ app.post("/cadastroProdutoart", async(req, res)=>{
 
 });
 
+app.get("/produtoart", async(req, res)=>{
+    res.sendFile(__dirname +"/produto.html");
+})
+
+app.get("/usuario", async(req, res)=>{
+    res.sendFile(__dirname +"/usuario.html");
+})
+
 app.get("/", async(req, res)=>{
-    res.sendFile(__dirname +"/index.html");
+    res.sendFile(__dirname +"/home.html");
 })
 
 //configurando a porta
